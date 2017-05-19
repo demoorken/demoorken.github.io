@@ -1,0 +1,64 @@
+.left {
+float:left;
+width:50%
+display:inline-block;
+}
+
+.right {
+float:right;
+display:inline-block;
+}
+
+.building {
+width:auto;
+min-width:183px;
+height:90px;
+display:inline-block;
+margin:3px;
+position:relative;
+border:1px solid black;
+visibility:hidden;
+}
+
+.building img{
+height:90px;
+width:80px;
+}
+
+.building p
+{
+margin-top:5px;
+margin-bottom:5px;
+}
+
+.building button
+{
+width:40%;
+bottom:-5px;
+right:2px;
+position:absolute;
+}
+
+.price {
+background-color:darkgrey;
+font-weight:bold;
+opacity:0.8;
+color:black;
+height:22px;
+font-size: 20px;
+display:inline-block;
+left:2px;
+bottom:-2px;
+position:absolute;
+}
+
+.info
+{
+text-align:center;
+}
+
+.cheat
+{
+width:10% !important;
+display:inline-block;
+}

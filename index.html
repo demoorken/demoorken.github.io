@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My mobile page!</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+<link rel="stylesheet" href="custom.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<script src="game.js"></script>
+</head>
+<body>
+	<div data-role="page" id="buildings">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#buildings" class="ui-btn-active ui-state-persist">Buildings</a></li>
+				<li><a href="#upgrades">Upgrades</a></li>
+				<li><a href="#achievements">Achievements</a></li>
+				<li><a href="#reset">Reset Boosts</a></li>
+			</ul>
+		</div>
+		<div class="info">
+			<p>Gold : <b>15</b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;         Gold/s</b> : <b>0</b>
+		</div>
+		<div data-role="main" class="ui-content">
+		<div class ="building" id="building1">
+			<div class="left">
+			<img src="images/tent.png">
+			</div>
+			<div class="right">
+			<p>Tent x0</p>
+			<p>0 gold/s</p>
+			</div>
+			<p class="price">15g<p>
+			<button id ="buyBuilding1" class="ui-btn ui-mini" onclick="buyBuilding(this)">Buy</button>
+		</div>
+			<div class ="building" id="building2">
+			<div class="left">
+			<img src="images/farm.png">
+			</div>
+			<div class="right">
+			<p>Farm x0</p>
+			<p>0 gold/s</p>
+			</div>
+			<p class="price">60g<p>
+			<button id ="buyBuilding2" class="ui-btn ui-mini" onclick="buyBuilding(this)">Buy</button>
+		</div>
+				<div class ="building" id="building3">
+			<div class="left">
+			<img src="images/barracks.png">
+			</div>
+			<div class="right">
+			<p>Barracks x0</p>
+			<p>0 gold/s</p>
+			</div>
+			<p class="price">200g<p>
+			<button id ="buyBuilding3" class="ui-btn ui-mini" onclick="buyBuilding(this)">Buy</button>
+		</div>
+				<div class ="building" id="building4">
+			<div class="left">
+			<img src="images/church.png">
+			</div>
+			<div class="right">
+			<p>Church x0</p>
+			<p>0 gold/s</p>
+			</div>
+			<p class="price">600g<p>
+			<button id ="buyBuilding4" class="ui-btn ui-mini" onclick="buyBuilding(this)">Buy</button>
+		</div>
+				<div class ="building" id="building5">
+			<div class="left">
+			<img src="images/castle.png">
+			</div>
+			<div class="right">
+			<p>Castle x0</p>
+			<p>0 gold/s</p>
+			</div>
+			<p class="price">2000g<p>
+			<button id ="buyBuilding5" class="ui-btn ui-mini" onclick="buyBuilding(this)">Buy</button>
+		</div>
+		</div>
+		<div data-role="footer">
+			<h2 onclick="cheat()">&copy; Boxie</h2>
+		</div>
+	</div>
+	
+	<div data-role="page" id="upgrades">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#buildings" >Buildings</a></li>
+				<li><a href="#upgrades" class="ui-btn-active ui-state-persist">Upgrades</a></li>
+				<li><a href="#achievements">Achievements</a></li>
+				<li><a href="#reset">Reset Boosts</a></li>
+			</ul>
+		</div>
+		<div class="info">
+			<p>Gold : <b>125001</b>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;         Gold/s</b> : <b>344</b>
+		</div>
+		<div data-role="main" class="ui-content">
+			<h1>Hello world</h1>
+			<p>Welcome to my first page</p>
+			<a href="#page2">Page 2</a>
+		</div>
+		<div data-role="footer">
+			<h2 onclick="cheat">&copy; Boxie</h2>
+		</div>
+	</div>
+	
+	<div data-role="page" id="achievements">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#buildings">Buildings</a></li>
+				<li><a href="#upgrades">Upgrades</a></li>
+				<li><a href="#achievements" class="ui-btn-active ui-state-persist">Achievements</a></li>
+				<li><a href="#reset">Reset Boosts</a></li>
+			</ul>
+		</div>
+		<div data-role="main" class="ui-content">
+			<h1>Hello world</h1>
+			<p>Welcome to my first page</p>
+			<a href="#page2">Page 2</a>
+		</div>
+		<div data-role="footer">
+			<h2>&copy; Chou Doe je MWAPP</h2>
+		</div>
+	</div>
+	
+	<div data-role="page" id="reset">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#buildings">Buildings</a></li>
+				<li><a href="#upgrades">Upgrades</a></li>
+				<li><a href="#achievements">Achievements</a></li>
+				<li><a href="#reset" class="ui-btn-active ui-state-persist">Reset Boosts</a></li>
+			</ul>
+		</div>
+		<div data-role="main" class="ui-content">
+			<h1>Hello world</h1>
+			<p>Welcome to my first page</p>
+			<a href="#page2">Page 2</a>
+		</div>
+		<div data-role="footer">
+			<h2>&copy; Chou Doe je MWAPP</h2>
+		</div>
+	</div>
+	
+</body>
+</html>
