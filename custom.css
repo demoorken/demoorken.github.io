@@ -4,6 +4,14 @@ width:50%
 display:inline-block;
 }
 
+p{
+font-size:22px;
+}
+
+a{
+font-size:22px !important;
+}
+
 .right {
 float:right;
 display:inline-block;
@@ -11,8 +19,8 @@ display:inline-block;
 
 .building {
 width:auto;
-min-width:183px;
-height:90px;
+min-width:250px;
+height:110px;
 display:inline-block;
 margin:3px;
 position:relative;
@@ -21,8 +29,8 @@ visibility:hidden;
 }
 
 .building img{
-height:90px;
-width:80px;
+height:110px;
+width:110px;
 }
 
 .building p
@@ -33,9 +41,10 @@ margin-bottom:5px;
 
 .building button
 {
-width:40%;
+width:45%;
 bottom:-5px;
-right:2px;
+right:-5px;
+float:right;
 position:absolute;
 }
 
@@ -44,8 +53,8 @@ background-color:darkgrey;
 font-weight:bold;
 opacity:0.8;
 color:black;
-height:22px;
-font-size: 20px;
+height:26px;
+font-size: 24px;
 display:inline-block;
 left:2px;
 bottom:-2px;
