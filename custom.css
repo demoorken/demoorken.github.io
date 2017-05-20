@@ -9,7 +9,7 @@ font-size:30px;
 }
 
 a{
-font-size:28px !important;
+font-size:25px !important;
 }
 
 .right {
@@ -21,11 +21,14 @@ display:inline-block;
 width:auto;
 min-width:340px;
 height:160px;
-display:inline-block;
+display:none;
 margin:3px;
 position:relative;
 border:1px solid black;
-visibility:hidden;
+}
+
+#building1 {
+display:inline-block;
 }
 
 .building img{
