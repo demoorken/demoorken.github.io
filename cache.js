@@ -6,7 +6,7 @@ self.addEventListener('install', function(e) {
      return cache.addAll([
        '/',
        '/index.html',
-       '/game.js,
+       '/game.js',
        '/custom.css',
        '/numeral.min.js',
        '/images/50',
