@@ -82,12 +82,37 @@ display:inline-block;
 #upgradeIcons
 {
 float:left;
+min-height:300px;
 width:50%;
 display:inline-block;
 }
+
 #upgradeText
 {
+width:50%
 display:inline-block;
+}
+
+#upgradeText > p:first-child
+{
+font-weight: bold;
+text-decoration: underline;
+margin-top:-5px;
+}
+
+#upgradeText > p
+{
+margin-top:10px;
+margin-bottom:0px;
+}
+
+#upgradeText > button
+{
+background-color:lightgrey !important;
+font-size:30px !important;
+font-weight:bold !important;
+max-width:50%;
+float:right;
 }
 
 .upgradeIcons

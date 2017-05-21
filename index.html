@@ -118,26 +118,29 @@
             </ul>
         </div>
         <div class="info">
-            <p>Gold : <b>125001</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Gold/s</b> : <b>344</b>
+            <p>Gold : <b>15</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Gold/s</b> : <b>0</b>
         </div>
         <div data-role="main" class="ui-content">
             <div id="upgradeIcons">
-                <img src="images/builder.png" class="upgradeIcons" id="upgrade1" onclick="upgradeClicked(this)">
-				<img src="images/builder.png" class="upgradeIcons" id="upgrade2" onclick="upgradeClicked(this)">
-				<img src="images/builder.png" class="upgradeIcons" id="upgrade3" onclick="upgradeClicked(this)">
-				<img src="images/builder.png" class="upgradeIcons" id="upgrade4" onclick="upgradeClicked(this)">
-				<img src="images/builder.png" class="upgradeIcons" id="upgrade5" onclick="upgradeClicked(this)">
-				<img src="images/builder.png" class="upgradeIcons" id="upgrade6" onclick="upgradeClicked(this)">
-				<img src="images/builder.png" class="upgradeIcons" id="upgrade7" onclick="upgradeClicked(this)">
-				<img src="images/builder.png" class="upgradeIcons" id="upgrade8" onclick="upgradeClicked(this)">
+                <img src="images/50.png" class="upgradeIcons" id="upgrade1" onclick="upgradeClicked(this)">
+				<img src="images/100.png" class="upgradeIcons" id="upgrade2" onclick="upgradeClicked(this)">
+				<img src="images/250.png" class="upgradeIcons" id="upgrade3" onclick="upgradeClicked(this)">
+				<img src="images/1000.png" class="upgradeIcons" id="upgrade4" onclick="upgradeClicked(this)">
+				<img src="images/10000.png" class="upgradeIcons" id="upgrade5" onclick="upgradeClicked(this)">
+				<img src="images/100000.png" class="upgradeIcons" id="upgrade6" onclick="upgradeClicked(this)">
+				<img src="images/1000000.png" class="upgradeIcons" id="upgrade7" onclick="upgradeClicked(this)">
+				<img src="images/10000000.png" class="upgradeIcons" id="upgrade8" onclick="upgradeClicked(this)">
             </div>
             <div id="upgradeText">
-                <p>Builder x0</p>
-                <p>0 Tent/s</p>
+                <p>50 buildings</p>
+				<p>Get 50 buildings total to unlock</p>
+				<p>Progress: <b>0/50</b>
+				<p>Increase global gold/s by 20%</p>
+				<button id="buyUpgrade1" class="ui-btn" onclick="buyUpgrade(this)">Buy for 2500g</button>
             </div>
         </div>
         <div data-role="footer">
-            <h2 onclick="cheat">&copy; Boxie</h2>
+            <h2 onclick="cheat()">&copy; Boxie</h2>
         </div>
     </div>
 
@@ -156,7 +159,7 @@
             <a href="#page2">Page 2</a>
         </div>
         <div data-role="footer">
-            <h2>&copy; Chou Doe je MWAPP</h2>
+            <h2 onclick="cheat()">&copy; Boxie</h2>
         </div>
     </div>
 
@@ -175,7 +178,7 @@
             <a href="#page2">Page 2</a>
         </div>
         <div data-role="footer">
-            <h2>&copy; Chou Doe je MWAPP</h2>
+            <h2 onclick="cheat()">&copy; Boxie</h2>
         </div>
     </div>
 
