@@ -3,6 +3,7 @@ var totalGold = 15;
 var income = 0;
 var buildings=[[15,1,1,0,"Tent"],[60,2,1,0,"Farm"],[200,3,1,0,"Barracks"],[600,5,1,0,"Church"],[2000,10,1,0,"Castle"],[30000,25,1,0,"Bank"],[1000000,1,1,0,"Builder"]]
 var tents = 0;
+var lastClicked = 1;
 function buyBuilding(building)
 {
 	var buildingID = parseInt(building.id.toString().substr(-1))-1;
@@ -26,6 +27,19 @@ function buyBuilding(building)
 	{
 		$('#building'+building.id.toString().substr(-1)+' div p:nth-child(2)').html(Math.round(buildings[buildingID][3]*buildings[buildingID][2]*buildings[buildingID][1])/10+' Tent/s');
 	}
+}
+
+function upgradeClicked(upgrade)
+{
+	var upgradeID = parseInt(upgrade.id.toString().substr(-1));
+	console.log(upgradeID);
+	$('#upgrade' + upgradeID).css("box-shadow","0px 0px 35px lightblue");
+	if(lastClicked!=upgradeID)
+	{
+	$('#upgrade' + lastClicked).css("box-shadow","none");	
+	}
+	lastClicked=upgradeID;
+	
 }
 
 function cheat()

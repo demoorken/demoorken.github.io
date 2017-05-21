@@ -78,3 +78,23 @@ text-align:center;
 width:10% !important;
 display:inline-block;
 }
+
+#upgradeIcons
+{
+float:left;
+width:50%;
+display:inline-block;
+}
+#upgradeText
+{
+display:inline-block;
+}
+
+.upgradeIcons
+{
+height:140px;
+width:140px;
+border:2px solid black;
+}
+
+
