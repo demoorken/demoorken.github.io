@@ -38,7 +38,7 @@ function buyBuilding(building)
 		}
 	}
 	$('#building'+building.id.toString().substr(-1)+' div p:first').html(buildings[buildingID][4]+" x"+buildings[buildingID][3]);
-	$('#building'+building.id.toString().substr(-1)+' p:nth-child(3)').html(buildings[buildingID][0]+'g');
+	$('#building'+building.id.toString().substr(-1)+' p:nth-child(3)').html(num(buildings[buildingID][0]));
 	if(buildingID<6)
 	{
 		$('#building'+building.id.toString().substr(-1)+' div p:nth-child(2)').html(buildings[buildingID][3]*buildings[buildingID][2]*buildings[buildingID][1]+' gold/s');
@@ -71,9 +71,9 @@ function setUpgradeText(upgradeID)
 	$('#upgradeText').html(
 	'<p>'+upgrades[upgradeID][0]+'</p> '+
 	'<p>'+upgrades[upgradeID][1]+'</p> '+
-	'<p> Progress: <b>'+totalBuildings+'/'+upgrades[upgradeID][2]+'</b></p> '+
+	'<p> Progress: <b>'+num(totalBuildings)+'/'+num(upgrades[upgradeID][2])+'</b></p> '+
 	'<p>'+upgrades[upgradeID][3]+'</p> '+
-	'<button id="buyUpgrade'+(upgradeID+1)+'" class="ui-btn" onclick="buyUpgrade('+upgradeID+')">Buy for '+upgrades[upgradeID][5]+'g</button>'
+	'<button id="buyUpgrade'+(upgradeID+1)+'" class="ui-btn" onclick="buyUpgrade('+upgradeID+')">Buy for '+num(upgrades[upgradeID][5])+'</button>'
 	);
 }
 
@@ -119,6 +119,22 @@ function cheat()
 		}
 	}
 }
+
+function num(number) {
+ if(number>=100000)
+ {
+	if(number>=10000000000000000)
+	 {
+		return numeral(number).format('0.00e+0');
+	 }
+	else {
+	 return numeral(number).format('0.00a');
+	 }
+}
+ else {
+ return number;
+ }
+}
 setInterval(function(){ 
 tents += 0.1*buildings[6][3]*buildings[6][2];
 gold += parseInt(income*globalmult);
@@ -135,7 +151,7 @@ if(tents>=1)
 }
 setUpgradeText(lastClicked-1);
 $('.info').each(function(i, obj) {
-    obj.innerHTML = "<p>Gold : <b>"+gold+"</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Gold/s</b> : <b>"+parseInt(income*globalmult)+"</b>"
+    obj.innerHTML = "<p>Gold : <b>"+num(gold)+"</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Gold/s</b> : <b>"+num(parseInt(income*globalmult))+"</b>"
 	if (totalGold<(1000000+income*2*globalmult))
 	{
 		if(totalGold>1000000)
