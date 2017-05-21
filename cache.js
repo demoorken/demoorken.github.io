@@ -9,14 +9,21 @@ self.addEventListener('install', function(e) {
        '/game.js',
        '/custom.css',
        '/numeral.min.js',
-       '/images/50',
-	   '/images/100',
-	   '/images/250',
-	   '/images/1000',
-	   '/images/10000',
-	   '/images/100000',
-	   '/images/1000000',
-	   '/images/10000000'
+       '/images/50.png',
+	   '/images/100.png',
+	   '/images/250.png',
+	   '/images/1000.png',
+	   '/images/10000.png',
+	   '/images/100000.png',
+	   '/images/1000000.png',
+	   '/images/10000000.png',
+	   '/images/tent.png',
+	   '/images/farm.png',
+	   '/images/barracks.png',
+	   '/images/church.png',
+	   '/images/castle.png',
+	   '/images/bank.png',
+	   '/images/builder.png'
      ]);
    })
  );
