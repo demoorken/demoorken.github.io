@@ -32,7 +32,7 @@ function cheat()
 {
 	gold += 25*income;
 	totalGold += 25*income;
-	if (totalGold<1100000)
+	if (totalGold<1000000+income*50)
 	{
 		if(totalGold>1000000)
 		{
@@ -75,7 +75,7 @@ if(tents>=1)
 }
 $('.info').each(function(i, obj) {
     obj.innerHTML = "<p>Gold : <b>"+gold+"</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Gold/s</b> : <b>"+income+"</b>"
-	if (totalGold<35000)
+	if (totalGold<(1000000+income*2))
 	{
 		if(totalGold>1000000)
 		{
