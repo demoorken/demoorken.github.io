@@ -36,17 +36,32 @@ function buyBuilding(building)
 		{
 			income += parseInt(buildings[buildingID][1]*buildings[buildingID][2]);
 		}
+		$('.info').each(function(i, obj) {
+		obj.innerHTML = "<p>Gold : <b>"+num(gold)+"</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Gold/s</b> : <b>"
+		+num(parseInt(income*globalmult))+"</b>"
+		});
 	}
-	$('#building'+building.id.toString().substr(-1)+' div p:first').html(buildings[buildingID][4]+" x"+buildings[buildingID][3]);
+	$('#building'+building.id.toString().substr(-1)+' div p:first').html(buildings[buildingID][4]+" x"+num(buildings[buildingID][3]));
 	$('#building'+building.id.toString().substr(-1)+' p:nth-child(3)').html(num(buildings[buildingID][0]));
 	if(buildingID<6)
 	{
-		$('#building'+building.id.toString().substr(-1)+' div p:nth-child(2)').html(buildings[buildingID][3]*buildings[buildingID][2]*buildings[buildingID][1]+' gold/s');
+		$('#building'+building.id.toString().substr(-1)+' div p:nth-child(2)').html(num(buildings[buildingID][3]*buildings[buildingID][2]*buildings[buildingID][1])+' gold/s');
 	}
 	else
 	{
-		$('#building'+building.id.toString().substr(-1)+' div p:nth-child(2)').html(Math.round(buildings[buildingID][3]*buildings[buildingID][2]*buildings[buildingID][1])/10+' Tent/s');
+		$('#building'+building.id.toString().substr(-1)+' div p:nth-child(2)').html(num(Math.round(buildings[buildingID][3]*buildings[buildingID][2]*buildings[buildingID][1])/10)+' Tent/s');
 	}
+	
+	$('.building').each(function(i, obj) {
+		var buildingID = parseInt(obj.id.toString().substr(-1))-1;
+		if(buildings[buildingID][0] > gold)
+		{
+		$('#building'+(buildingID+1)).css("opacity","0.5");
+		}
+		else{
+		$('#building'+(buildingID+1)).css("opacity","1");
+		}
+});
 }
 
 function upgradeClicked(upgrade)
@@ -77,6 +92,11 @@ function setUpgradeText(upgradeID)
 	);
 }
 
+function setProgressText(upgradeID)
+{
+	$('#upgradeText p:nth-child(3)').html('Progress: <b>'+num(totalBuildings)+'/'+num(upgrades[upgradeID][2])+'</b>');
+}
+
 function buyUpgrade(upgradeID)
 {
 	if(upgrades[upgradeID][5]<= gold && totalBuildings >= upgrades[upgradeID][2])
@@ -84,7 +104,20 @@ function buyUpgrade(upgradeID)
 		globalmult *= upgrades[upgradeID][4];
 		gold -= upgrades[upgradeID][5];
 		$('#upgrade'+(upgradeID+1)).remove();
-		$('#upgradeIcons img:first').click();
+		if($('#upgradeIcons img:first').length != 0)
+		{
+			$('#upgradeIcons img:first').click();
+		}
+		else {
+		$('#upgradeText').html(
+		'<p>Congratulations</p> '+
+		'<p>You bought every upgrade</p> '+
+		'<p><b>You have beaten the game</b></p> '+
+		'<p>You should really reset now</p> '+
+		'<a href="#reset">Reset</a></li>'
+		);
+	
+		}
 	}
 }
 function cheat()
@@ -145,39 +178,54 @@ if(tents>=1)
 	income += Math.floor(tents)*parseInt(buildings[0][1]*buildings[0][2]);
 	totalBuildings += Math.floor(tents)
 	tents -= Math.floor(tents);
-	$('#building1 div p:first').html(buildings[0][4]+" x"+buildings[0][3]);
-	$('#building1 div p:nth-child(2)').html(buildings[0][3]*buildings[0][2]*buildings[0][1]+' gold/s');
+	$('#building1 div p:first').html(buildings[0][4]+" x"+num(buildings[0][3]));
+	$('#building1 div p:nth-child(2)').html(num(buildings[0][3]*buildings[0][2]*buildings[0][1])+' gold/s');
 	
 }
-setUpgradeText(lastClicked-1);
+if($('#upgradeIcons img:first').length != 0)
+		{
+			setProgressText(lastClicked-1);
+		}
+if (totalGold<(1000000+income*2*globalmult))
+{
+	if(totalGold>1000000)
+	{
+	$('#building7').css("display","inline-block");
+	}
+	if(totalGold>30000)
+	{
+	$('#building6').css("display","inline-block");
+	}
+	if(totalGold>2000)
+	{
+	$('#building5').css("display","inline-block");
+	}
+	if(totalGold>600)
+	{
+	$('#building4').css("display","inline-block");
+	}
+	if(totalGold>200)
+	{
+	$('#building3').css("display","inline-block");
+	}
+	if(totalGold>60)
+	{
+	$('#building2').css("display","inline-block");
+	}
+}
+$('.building').each(function(i, obj) {
+		var buildingID = parseInt(obj.id.toString().substr(-1))-1;
+		if(buildings[buildingID][0] > gold)
+		{
+		$('#building'+(buildingID+1)).css("opacity","0.5");
+		}
+		else{
+		$('#building'+(buildingID+1)).css("opacity","1");
+		}
+});
+		
 $('.info').each(function(i, obj) {
     obj.innerHTML = "<p>Gold : <b>"+num(gold)+"</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Gold/s</b> : <b>"+num(parseInt(income*globalmult))+"</b>"
-	if (totalGold<(1000000+income*2*globalmult))
-	{
-		if(totalGold>1000000)
-		{
-		$('#building7').css("display","inline-block");
-		}
-		if(totalGold>30000)
-		{
-		$('#building6').css("display","inline-block");
-		}
-		if(totalGold>2000)
-		{
-		$('#building5').css("display","inline-block");
-		}
-		if(totalGold>600)
-		{
-		$('#building4').css("display","inline-block");
-		}
-		if(totalGold>200)
-		{
-		$('#building3').css("display","inline-block");
-		}
-		if(totalGold>60)
-		{
-		$('#building2').css("display","inline-block");
-		}
-	}
+
 });
 }, 1000);
