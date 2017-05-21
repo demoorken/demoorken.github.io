@@ -22,9 +22,11 @@ var tents = 0;
 var lastClicked = 1;
 var globalmult = 1;
 var totalBuildings = 0;
+var cheat = false;
 
 function buyBuilding(building)
 {
+	$('#building1 button').removeClass("glow");
 	var buildingID = parseInt(building.id.toString().substr(-1))-1;
 	if(buildings[buildingID][0] <= gold)
 	{
@@ -120,37 +122,12 @@ function buyUpgrade(upgradeID)
 		}
 	}
 }
-function cheat()
+
+function cheating()
 {
-	gold += parseInt(25*income*globalmult);
-	totalGold += parseInt(25*income*globalmult);
-	if (totalGold<1000000+income*50*globalmult)
-	{
-		if(totalGold>1000000)
-		{
-		$('#building7').css("display","inline-block");
-		}
-		if(totalGold>30000)
-		{
-		$('#building6').css("display","inline-block");
-		}
-		if(totalGold>2000)
-		{
-		$('#building5').css("display","inline-block");
-		}
-		if(totalGold>600)
-		{
-		$('#building4').css("display","inline-block");
-		}
-		if(totalGold>200)
-		{
-		$('#building3').css("display","inline-block");
-		}
-		if(totalGold>60)
-		{
-		$('#building2').css("display","inline-block");
-		}
-	}
+	cheat = !cheat;
+	if(cheat){globalmult *= 5}
+	else {globalmult /= 5}
 }
 
 function num(number) {
@@ -168,7 +145,19 @@ function num(number) {
  return number;
  }
 }
-setInterval(function(){ 
+
+setInterval(function(){
+if(!cheat)
+{
+tick();}
+else{
+for(i=0;i<50;i++)
+{setTimeout(function(){ tick();}, i*50);}
+}
+}, 1000);
+
+function tick()
+{
 tents += 0.1*buildings[6][3]*buildings[6][2];
 gold += parseInt(income*globalmult);
 totalGold += parseInt(income*globalmult);
@@ -228,4 +217,4 @@ $('.info').each(function(i, obj) {
     obj.innerHTML = "<p>Gold : <b>"+num(gold)+"</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Gold/s</b> : <b>"+num(parseInt(income*globalmult))+"</b>"
 
 });
-}, 1000);
+}
