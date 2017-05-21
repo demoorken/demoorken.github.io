@@ -33,7 +33,7 @@ function upgradeClicked(upgrade)
 {
 	var upgradeID = parseInt(upgrade.id.toString().substr(-1));
 	console.log(upgradeID);
-	$('#upgrade' + upgradeID).css("box-shadow","0px 0px 35px lightblue");
+	$('#upgrade' + upgradeID).css("box-shadow","0px 0px 35px blue");
 	if(lastClicked!=upgradeID)
 	{
 	$('#upgrade' + lastClicked).css("box-shadow","none");	
