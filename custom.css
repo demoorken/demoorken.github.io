@@ -50,6 +50,7 @@ display:none;
 margin:3px;
 position:relative;
 border:1px solid black;
+
 }
 
 #building1 {
@@ -115,7 +116,7 @@ text-align:center;
 text-align:center;
 }
 
-.achievInfo
+#resetInfo
 {
 text-align:center;
 }
