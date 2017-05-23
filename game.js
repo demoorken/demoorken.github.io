@@ -6,6 +6,7 @@ var prestigeGoldPurchased = 0;
 var prestigeMult = 1;
 var prestigeTotalGold = 15;
 var prestigePoints = 0;
+var prestigePointsEarned = 0;
 var prestigePointsTotal = 0;
 var buildings = [
     [15, 1, 1, 0, "Tent"],
@@ -97,9 +98,9 @@ function updateInfo() {
         '</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Bonus</b> : <b>' +
         numeral(achievmult - 1).format('0.00%') +
         ' gold/s</b>');
-	$('#resetInfo').html('<p>Reset points(RP): <b>'+num(prestigePoints)+'</b></p>');
-	$('#nextPoint').html('<p id="nextPoint"> Next reset point : '+ num(prestigeTotalGold)+ ' / '+ num(prestigePointsTotal*1000000+1000000)+'<b> ('+
-		numeral(prestigeTotalGold/(prestigePointsTotal*1000000+1000000)).format('0.00%')+')</b>');
+	$('#resetInfo').html('<p>Reset points(RP): '+num(prestigePointsEarned)+'<b> (+'+num(prestigePoints)+' RP on reset)</b></p>');
+	$('#nextPoint').html('<p id="nextPoint"> Next reset point : '+ num(Math.round(prestigeTotalGold))+ ' / '+ num(Math.pow(prestigePointsTotal,1.05)*1000000+1000000)+'<b> ('+
+		numeral(prestigeTotalGold/(Math.pow(prestigePointsTotal,1.05)*1000000+1000000)).format('0.00%')+')</b>');
 }
 
 function upgradeClicked(upgrade) {
@@ -244,45 +245,63 @@ function sec(number) {
 
 function prestigeCheck()
 {
-	if (prestigeTotalGold>=prestigePointsTotal*1000000+1000000)
+	if (prestigeTotalGold>=Math.pow(prestigePointsTotal,1.05)*1000000+1000000)
 	{
-		while(prestigeTotalGold>=prestigePointsTotal*1000000+1000000)
+		while(prestigeTotalGold>=Math.pow(prestigePointsTotal,1.05)*1000000+1000000)
 		{
 		prestigePoints++;
+		prestigeTotalGold -= Math.pow(prestigePointsTotal,1.05)*1000000+1000000
 		prestigePointsTotal++;
-		prestigeTotalGold -= 1000000*prestigePointsTotal;
+		;
 		}
 	}
 }
 
 function setResetButtons()
 {
-	$('#resetButtons').html('<button id="#prestigeMult" class=" ui-btn ui-shadow ui-corner-all" onclick="buyPrestigeMult()">Buy +5% for ' +num(Math.round((prestigeMult-0.95)*20))+' RP</button>'+
-		'<button id="#prestigeGold" class=" ui-btn ui-shadow ui-corner-all" onclick="buyPrestigeGold()">Buy +'+num(Math.round(Math.pow((10+prestigeGoldPurchased),2)))+
-		' for ' +num(prestigeGoldPurchased+1)+' RP</button>'+
+	$('#resetButtons').html('<div class="resetButtons">'+
+		'<div class="left">'+
+		'<p> gold/s bonus: <b>'+numeral(prestigeMult-1).format('0%')+ 
+		'</b></div>'+
+		'<div clas="right">'+
+		'<button id="#prestigeMult" class=" ui-btn ui-shadow ui-corner-all resetButton" onclick="buyPrestigeMult()">Buy +5% for ' +num(Math.round((prestigeMult-0.95)*20))+' RP</button>'+
+		'</div>'+
+		'</div>'+
+		'<div class="resetButtons">'+
+		'<div class="left">'+
+		'<p> start gold:  <b>'+num(prestigeGold)+ 
+		'</b></div>'+
+		'<div clas="right">'+
+		'<button id="#prestigeGold" class=" ui-btn ui-shadow ui-corner-all resetButton" onclick="buyPrestigeGold()">Buy +'+num(Math.round(Math.pow((10+prestigeGoldPurchased),2)))+
+			' for ' +num(prestigeGoldPurchased+1)+' RP</button>'+
+		'</div>'+
+		'</div>'+
+		
 		'<button id="#reset" class=" ui-btn ui-shadow ui-corner-all" onclick="confirmHandler()">Reset</button>')
 }
 
 function buyPrestigeMult()
 {
-	if(prestigePoints >= Math.floor((prestigeMult-0.95)*20))
+	if(prestigePointsEarned >= Math.floor((prestigeMult-0.95)*20))
 	{
 		globalmult /= prestigeMult;
 		prestigeMult += 0.05;
 		globalmult *= prestigeMult;
-		prestigePoints -= Math.floor((prestigeMult-1)*20);
+		prestigePointsEarned -= Math.floor((prestigeMult-1)*20);
 		setResetButtons();
+		updateInfo();
 	}
 }
 
 function buyPrestigeGold()
 {
-	if(prestigePoints >= prestigeGoldPurchased+1)
+	if(prestigePointsEarned >= prestigeGoldPurchased+1)
 	{
 		prestigeGold += Math.round(Math.pow((10+prestigeGoldPurchased),2));
 		prestigeGoldPurchased++;
-		prestigePoints -= prestigeGoldPurchased;
+		prestigePointsEarned -= prestigeGoldPurchased;
 		setResetButtons();
+		updateInfo();
 	}
 }
 
@@ -368,6 +387,8 @@ highlight(1, "upgrade");
 setUpgradeText(0);
 gold = prestigeGold;
 totalGold = prestigeGold;
+prestigePointsEarned += prestigePoints;
+prestigePoints=0;
 income = 0;
 buildings = [
     [15, 1, 1, 0, "Tent"],
@@ -415,7 +436,7 @@ function confirmHandler()
 {
 		$.confirm({
 			'title'		: 'Reset Confirmation',
-			'message'	: 'You are about to reset. <br />You will gain RP But lose everything except achievements! Continue?',
+			'message'	: 'You are about to reset. <br />You will gain <b>'+ num(prestigePoints)+' RP </b> But lose everything except achievements! Continue?',
 			'buttons'	: {
 				'Yes'	: {
 					'class'	: 'blue',
