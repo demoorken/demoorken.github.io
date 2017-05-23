@@ -138,7 +138,7 @@
 				<p>Get 50 buildings total to unlock</p>
 				<p>Progress: <b>0/50</b>
 				<p>Increase global gold/s by 20%</p>
-				<button id="buyUpgrade1" class="ui-btn" onclick="buyUpgrade(0)">Buy for 5000g</button>
+				<button id="buyUpgrade1" class="ui-btn" onclick="buyUpgrade(0)">Buy for 5000</button>
             </div>
         </div>
         <div data-role="footer">
@@ -155,10 +155,29 @@
                 <li><a href="#reset">Reset</a></li>
             </ul>
         </div>
+		<div id="achievInfo">
+            <p>Completed : <b>0</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Bonus</b> : <b>0% gold/s</b>
+        </div>
         <div data-role="main" class="ui-content">
-            <h1>Hello world</h1>
-            <p>Welcome to my first page</p>
-            <a href="#page2">Page 2</a>
+             <div id="achievIcons">
+                <img src="images/2min.png" class="achievIcons" id="achiev1" onclick="achievClicked(this)">
+				<img src="images/10min.png" class="achievIcons" id="achiev2" onclick="achievClicked(this)">
+				<img src="images/30min.png" class="achievIcons" id="achiev3" onclick="achievClicked(this)">
+				<img src="images/60min.png" class="achievIcons" id="achiev4" onclick="achievClicked(this)">
+				<img src="images/120min.png" class="achievIcons" id="achiev5" onclick="achievClicked(this)">
+				<img src="images/300min.png" class="achievIcons" id="achiev6" onclick="achievClicked(this)">
+				<img src="images/720min.png" class="achievIcons" id="achiev7" onclick="achievClicked(this)">
+				<img src="images/1440min.png" class="achievIcons" id="achiev8" onclick="achievClicked(this)">
+				<img src="images/2880min.png" class="achievIcons" id="achiev9" onclick="achievClicked(this)">
+				<img src="images/7200min.png" class="achievIcons" id="achiev10" onclick="achievClicked(this)">
+				<img src="images/14400min.png" class="achievIcons" id="achiev11" onclick="achievClicked(this)">
+            </div>
+            <div id="achievText">
+                <p>2 minutes</p>
+				<p>Play for 2 minutes to unlock this achievement</p>
+				<p>Progress: <b>0s / 2m (0.00%)</b>
+				<p>Increase global gold/s by 5%</p>
+            </div>
         </div>
         <div data-role="footer">
             <h2 onclick="cheating()">&copy; Ken - Howest</h2>

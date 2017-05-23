@@ -110,6 +110,16 @@ height:16px;
 text-align:center;
 }
 
+#achievInfo
+{
+text-align:center;
+}
+
+.achievInfo
+{
+text-align:center;
+}
+
 .cheat
 {
 width:10% !important;
@@ -152,10 +162,44 @@ max-width:50%;
 float:right;
 }
 
+#achievIcons
+{
+float:left;
+min-height:300px;
+width:50%;
+display:inline-block;
+}
+
+#achievText
+{
+width:50%
+display:inline-block;
+}
+
+#achievText > p:first-child
+{
+font-weight: bold;
+text-decoration: underline;
+margin-top:-5px;
+}
+
+#achievText > p
+{
+margin-top:10px;
+margin-bottom:0px;
+}
+
 .upgradeIcons
 {
 height:140px;
 width:140px;
+border:2px solid black;
+}
+
+.achievIcons
+{
+height:100px;
+width:100px;
 border:2px solid black;
 }
 
