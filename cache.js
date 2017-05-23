@@ -9,6 +9,8 @@ self.addEventListener('install', function(e) {
        '/game.js',
        '/custom.css',
        '/numeral.min.js',
+	   '/jquery-1.11.1.min.js',
+	   '/jquery.mobile-1.4.5.min.js',
 	   '/jqueryconfirm/jqueryconfirm.js',
 	   '/jqueryconfirm/jqueryconfirm.css',
 	   '/jqueryconfirm/buttons.png',
