@@ -16,6 +16,7 @@
 </head>
 
 <body>
+	<style id="antiClickjack">body{display:none !important;}</style>
     <div data-role="page" id="buildings">
         <div data-role="navbar">
             <ul>
@@ -214,6 +215,14 @@ if('serviceWorker' in navigator) {
            .register('/cache.js')
            .then(function() { console.log("Service Worker Registered"); });
 }
+</script>
+<script type="text/javascript">
+   if (self === top) {
+       var antiClickjack = document.getElementById("antiClickjack");
+       antiClickjack.parentNode.removeChild(antiClickjack);
+   } else {
+       top.location = self.location;
+   }
 </script>
 </body>
 
