@@ -95,7 +95,7 @@ function updateInfo() {
             num(parseInt(income * globalmult * achievmult)) + " (+" + numeral(globalmult * achievmult - 1).format('0.00%') + ")" + "</b>"
     });
     $('#achievInfo').html('<p>Completed : <b>' + achievCompleted +
-        '</b>&nbsp;&nbsp;&nbsp;&nbsp;</b>bonus : <b>' +
+        '</b>&nbsp;&nbsp;&nbsp;&nbsp;</b>Bonus : <b>' +
         numeral(achievmult - 1).format('0.00%') +
         ' gold/s</b>');
     $('#resetInfo').html('<p>Reset points(RP): ' + num(prestigePointsEarned) + '<b> (+' + num(prestigePoints) + ' RP on reset)</b></p>');
