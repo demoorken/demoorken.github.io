@@ -1,6 +1,6 @@
 {
  "name": "Ken - Mobile Web Apps!",
- "short-name": "Ken-MWA",
+ "short_name": "Ken-MWA",
  "lang": "en",
   "start_url": "index.html",
   "display": "fullscreen",
