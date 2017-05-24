@@ -92,10 +92,10 @@ function buyBuilding(building) {
 function updateInfo() {
     $('.info').each(function(i, obj) {
         obj.innerHTML = "<p>Gold : <b>" + num(gold) + "</b>&nbsp;&nbsp;&nbsp;&nbsp;Gold/s</b> : <b>" +
-            num(parseInt(income * globalmult * achievmult)) + " (" + numeral(globalmult * achievmult - 1).format('0.00%') + " bonus)" + "</b>"
+            num(parseInt(income * globalmult * achievmult)) + " (+" + numeral(globalmult * achievmult - 1).format('0.00%') + ")" + "</b>"
     });
     $('#achievInfo').html('<p>Completed : <b>' + achievCompleted +
-        '</b>&nbsp;&nbsp;&nbsp;&nbsp;</b> : <b>' +
+        '</b>&nbsp;&nbsp;&nbsp;&nbsp;</b>bonus : <b>' +
         numeral(achievmult - 1).format('0.00%') +
         ' gold/s</b>');
     $('#resetInfo').html('<p>Reset points(RP): ' + num(prestigePointsEarned) + '<b> (+' + num(prestigePoints) + ' RP on reset)</b></p>');
@@ -256,7 +256,7 @@ function prestigeCheck() {
 function setResetButtons() {
     $('#resetButtons').html('<div class="resetButtons">' +
         '<div class="left">' +
-        '<p> gold/s bonus: <b>' + numeral(prestigeMult - 1).format('0%') +
+        '<p> gold/s: <b>+' + numeral(prestigeMult - 1).format('0%') +
         '</b></div>' +
         '<div clas="right">' +
         '<button id="#prestigeMult" class=" ui-btn ui-shadow ui-corner-all resetButton" onclick="buyPrestigeMult()">Buy +5% for ' + num(Math.round((prestigeMult - 0.95) * 20)) + ' RP</button>' +
