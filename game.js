@@ -91,11 +91,11 @@ function buyBuilding(building) {
 
 function updateInfo() {
     $('.info').each(function(i, obj) {
-        obj.innerHTML = "<p>Gold : <b>" + num(gold) + "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Gold/s</b> : <b>" +
+        obj.innerHTML = "<p>Gold : <b>" + num(gold) + "</b>&nbsp;&nbsp;&nbsp;&nbsp;Gold/s</b> : <b>" +
             num(parseInt(income * globalmult * achievmult)) + " (" + numeral(globalmult * achievmult - 1).format('0.00%') + " bonus)" + "</b>"
     });
     $('#achievInfo').html('<p>Completed : <b>' + achievCompleted +
-        '</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Bonus</b> : <b>' +
+        '</b>&nbsp;&nbsp;&nbsp;&nbsp;</b> : <b>' +
         numeral(achievmult - 1).format('0.00%') +
         ' gold/s</b>');
     $('#resetInfo').html('<p>Reset points(RP): ' + num(prestigePointsEarned) + '<b> (+' + num(prestigePoints) + ' RP on reset)</b></p>');
