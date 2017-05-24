@@ -2,8 +2,8 @@
  "name": "Ken - Mobile Web Apps!",
  "short_name": "Ken-MWA",
  "lang": "en",
-  "start_url": "index.html",
-  "display": "fullscreen",
+  "start_url": "/index.html",
+  "display": "standalone",
  "icons": [
   {
    "src": "favicon/android-icon-36x36.png",

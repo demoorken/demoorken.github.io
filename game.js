@@ -54,7 +54,7 @@ var ticks = 0;
 $(document).ready(function() {
     highlight(1, "upgrade");
     highlight(1, "achiev");
-	setResetButtons();
+    setResetButtons();
     updateInfo();
 });
 
@@ -98,9 +98,9 @@ function updateInfo() {
         '</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Bonus</b> : <b>' +
         numeral(achievmult - 1).format('0.00%') +
         ' gold/s</b>');
-	$('#resetInfo').html('<p>Reset points(RP): '+num(prestigePointsEarned)+'<b> (+'+num(prestigePoints)+' RP on reset)</b></p>');
-	$('#nextPoint').html('<p id="nextPoint"> Next reset point : '+ num(Math.round(prestigeTotalGold))+ ' / '+ num(Math.pow(prestigePointsTotal,1.05)*1000000+1000000)+'<b> ('+
-		numeral(prestigeTotalGold/(Math.pow(prestigePointsTotal,1.05)*1000000+1000000)).format('0.00%')+')</b>');
+    $('#resetInfo').html('<p>Reset points(RP): ' + num(prestigePointsEarned) + '<b> (+' + num(prestigePoints) + ' RP on reset)</b></p>');
+    $('#nextPoint').html('<p id="nextPoint"> Next reset point : ' + num(Math.round(prestigeTotalGold)) + ' / ' + num(Math.pow(prestigePointsTotal, 1.05) * 1000000 + 1000000) + '<b> (' +
+        numeral(prestigeTotalGold / (Math.pow(prestigePointsTotal, 1.05) * 1000000 + 1000000)).format('0.00%') + ')</b>');
 }
 
 function upgradeClicked(upgrade) {
@@ -243,66 +243,57 @@ function sec(number) {
     }
 }
 
-function prestigeCheck()
-{
-	if (prestigeTotalGold>=Math.pow(prestigePointsTotal,1.05)*1000000+1000000)
-	{
-		while(prestigeTotalGold>=Math.pow(prestigePointsTotal,1.05)*1000000+1000000)
-		{
-		prestigePoints++;
-		prestigeTotalGold -= Math.pow(prestigePointsTotal,1.05)*1000000+1000000
-		prestigePointsTotal++;
-		;
-		}
-	}
+function prestigeCheck() {
+    if (prestigeTotalGold >= Math.pow(prestigePointsTotal, 1.05) * 1000000 + 1000000) {
+        while (prestigeTotalGold >= Math.pow(prestigePointsTotal, 1.05) * 1000000 + 1000000) {
+            prestigePoints++;
+            prestigeTotalGold -= Math.pow(prestigePointsTotal, 1.05) * 1000000 + 1000000
+            prestigePointsTotal++;;
+        }
+    }
 }
 
-function setResetButtons()
-{
-	$('#resetButtons').html('<div class="resetButtons">'+
-		'<div class="left">'+
-		'<p> gold/s bonus: <b>'+numeral(prestigeMult-1).format('0%')+ 
-		'</b></div>'+
-		'<div clas="right">'+
-		'<button id="#prestigeMult" class=" ui-btn ui-shadow ui-corner-all resetButton" onclick="buyPrestigeMult()">Buy +5% for ' +num(Math.round((prestigeMult-0.95)*20))+' RP</button>'+
-		'</div>'+
-		'</div>'+
-		'<div class="resetButtons">'+
-		'<div class="left">'+
-		'<p> start gold:  <b>'+num(prestigeGold)+ 
-		'</b></div>'+
-		'<div clas="right">'+
-		'<button id="#prestigeGold" class=" ui-btn ui-shadow ui-corner-all resetButton" onclick="buyPrestigeGold()">Buy +'+num(Math.round(Math.pow((10+prestigeGoldPurchased),2)))+
-			' for ' +num(prestigeGoldPurchased+1)+' RP</button>'+
-		'</div>'+
-		'</div>'+
-		
-		'<button id="#reset" class=" ui-btn ui-shadow ui-corner-all" onclick="confirmHandler()">Reset</button>')
+function setResetButtons() {
+    $('#resetButtons').html('<div class="resetButtons">' +
+        '<div class="left">' +
+        '<p> gold/s bonus: <b>' + numeral(prestigeMult - 1).format('0%') +
+        '</b></div>' +
+        '<div clas="right">' +
+        '<button id="#prestigeMult" class=" ui-btn ui-shadow ui-corner-all resetButton" onclick="buyPrestigeMult()">Buy +5% for ' + num(Math.round((prestigeMult - 0.95) * 20)) + ' RP</button>' +
+        '</div>' +
+        '</div>' +
+        '<div class="resetButtons">' +
+        '<div class="left">' +
+        '<p> start gold:  <b>' + num(prestigeGold) +
+        '</b></div>' +
+        '<div clas="right">' +
+        '<button id="#prestigeGold" class=" ui-btn ui-shadow ui-corner-all resetButton" onclick="buyPrestigeGold()">Buy +' + num(Math.round(Math.pow((10 + prestigeGoldPurchased), 2))) +
+        ' for ' + num(prestigeGoldPurchased + 1) + ' RP</button>' +
+        '</div>' +
+        '</div>' +
+
+        '<button id="#reset" class=" ui-btn ui-shadow ui-corner-all" onclick="confirmHandler()">Reset</button>')
 }
 
-function buyPrestigeMult()
-{
-	if(prestigePointsEarned >= Math.floor((prestigeMult-0.95)*20))
-	{
-		globalmult /= prestigeMult;
-		prestigeMult += 0.05;
-		globalmult *= prestigeMult;
-		prestigePointsEarned -= Math.floor((prestigeMult-1)*20);
-		setResetButtons();
-		updateInfo();
-	}
+function buyPrestigeMult() {
+    if (prestigePointsEarned >= Math.floor((prestigeMult - 0.95) * 20)) {
+        globalmult /= prestigeMult;
+        prestigeMult += 0.05;
+        globalmult *= prestigeMult;
+        prestigePointsEarned -= Math.floor((prestigeMult - 1) * 20);
+        setResetButtons();
+        updateInfo();
+    }
 }
 
-function buyPrestigeGold()
-{
-	if(prestigePointsEarned >= prestigeGoldPurchased+1)
-	{
-		prestigeGold += Math.round(Math.pow((10+prestigeGoldPurchased),2));
-		prestigeGoldPurchased++;
-		prestigePointsEarned -= prestigeGoldPurchased;
-		setResetButtons();
-		updateInfo();
-	}
+function buyPrestigeGold() {
+    if (prestigePointsEarned >= prestigeGoldPurchased + 1) {
+        prestigeGold += Math.round(Math.pow((10 + prestigeGoldPurchased), 2));
+        prestigeGoldPurchased++;
+        prestigePointsEarned -= prestigeGoldPurchased;
+        setResetButtons();
+        updateInfo();
+    }
 }
 
 setInterval(function() {
@@ -322,11 +313,11 @@ function tick() {
     ticks++;
     tents += 0.1 * buildings[6][3] * buildings[6][2];
     checkAchievCompletion();
-    updateInfo(); 
+    updateInfo();
     gold += parseInt(income * globalmult * achievmult);
     totalGold += parseInt(income * globalmult * achievmult);
-	prestigeTotalGold += parseInt(income * globalmult * achievmult);
-	prestigeCheck();
+    prestigeTotalGold += parseInt(income * globalmult * achievmult);
+    prestigeCheck();
     if (tents >= 1) {
         buildings[0][3] += Math.floor(tents);
         income += Math.floor(tents) * parseInt(buildings[0][1] * buildings[0][2]);
@@ -342,7 +333,7 @@ function tick() {
     if ($('#achievIcons img:first').length != 0) {
         setAchievProgress(lastClickedAchiev - 1);
     }
-    if (totalGold < (1000000 + income * 2 * globalmult * achievmult + prestigeGold )) {
+    if (totalGold < (1000000 + income * 2 * globalmult * achievmult + prestigeGold)) {
         if (totalGold > 1000000) {
             $('#building7').css("display", "inline-block");
         }
@@ -372,82 +363,80 @@ function tick() {
     });
 }
 
-function reset()
-{
-$('#upgradeIcons').html('<img src="images/50.png" class="upgradeIcons" id="upgrade1" onclick="upgradeClicked(this)">'+
-				'<img src="images/100.png" class="upgradeIcons" id="upgrade2" onclick="upgradeClicked(this)">'+
-				'<img src="images/250.png" class="upgradeIcons" id="upgrade3" onclick="upgradeClicked(this)">'+
-				'<img src="images/1000.png" class="upgradeIcons" id="upgrade4" onclick="upgradeClicked(this)">'+
-				'<img src="images/10000.png" class="upgradeIcons" id="upgrade5" onclick="upgradeClicked(this)">'+
-				'<img src="images/100000.png" class="upgradeIcons" id="upgrade6" onclick="upgradeClicked(this)">'+
-				'<img src="images/1000000.png" class="upgradeIcons" id="upgrade7" onclick="upgradeClicked(this)">'+
-				'<img src="images/10000000.png" class="upgradeIcons" id="upgrade8" onclick="upgradeClicked(this)">');
-	
-highlight(1, "upgrade");
-setUpgradeText(0);
-gold = prestigeGold;
-totalGold = prestigeGold;
-prestigePointsEarned += prestigePoints;
-prestigePoints=0;
-income = 0;
-buildings = [
-    [15, 1, 1, 0, "Tent"],
-    [60, 2, 1, 0, "Farm"],
-    [200, 3, 1, 0, "Barracks"],
-    [600, 5, 1, 0, "Church"],
-    [2000, 10, 1, 0, "Castle"],
-    [30000, 25, 1, 0, "Bank"],
-    [1000000, 1, 1, 0, "Builder"]
-]
-upgrades = [
-    ["50 buildings", "Get 50 buildings total to unlock", 50, "Increase global gold/s by 20%", 1.2, 5000],
-    ["100 buildings", "Get 100 buildings total to unlock", 100, "Increase global gold/s by 20%", 1.2, 50000],
-    ["250 buildings", "Get 250 buildings total to unlock", 250, "Increase global gold/s by 20%", 1.2, 1000000],
-    ["1k buildings", "Get 1k buildings total to unlock", 1000, "Increase global gold/s by 20%", 1.2, 5000000],
-    ["10k buildings", "Get 10k buildings total to unlock", 10000, "Increase global gold/s by 20%", 1.2, 50000000],
-    ["100k buildings", "Get 100k buildings total to unlock", 100000, "Increase global gold/s by 20%", 1.2, 500000000],
-    ["1M buildings", "Get 1 Million buildings total to unlock", 1000000, "Increase global gold/s by 20%", 1.2, 5000000000],
-    ["10M buildings", "Get 10 Million buildings total to unlock", 10000000, "Increase global gold/s by 20%", 1.2, 50000000000]
-]
-tents = 0;
-lastClickedUpgrade = 1;
-globalmult = 1*prestigeMult;
-achievmult = 1;
-achievCompleted = 0;
-totalBuildings = 0;
-cheat = false;
+function reset() {
+    $('#upgradeIcons').html('<img src="images/50.png" class="upgradeIcons" id="upgrade1" onclick="upgradeClicked(this)">' +
+        '<img src="images/100.png" class="upgradeIcons" id="upgrade2" onclick="upgradeClicked(this)">' +
+        '<img src="images/250.png" class="upgradeIcons" id="upgrade3" onclick="upgradeClicked(this)">' +
+        '<img src="images/1000.png" class="upgradeIcons" id="upgrade4" onclick="upgradeClicked(this)">' +
+        '<img src="images/10000.png" class="upgradeIcons" id="upgrade5" onclick="upgradeClicked(this)">' +
+        '<img src="images/100000.png" class="upgradeIcons" id="upgrade6" onclick="upgradeClicked(this)">' +
+        '<img src="images/1000000.png" class="upgradeIcons" id="upgrade7" onclick="upgradeClicked(this)">' +
+        '<img src="images/10000000.png" class="upgradeIcons" id="upgrade8" onclick="upgradeClicked(this)">');
 
-$('.building').each(function(i, obj) {
-       obj.style.display ="none";
-	   var buildingID = parseInt(obj.id.toString().substr(-1)) - 1;
-	       $('#building' + obj.id.toString().substr(-1) + ' div p:first').html(buildings[buildingID][4] + " x" + num(buildings[buildingID][3]));
-    $('#building' + obj.id.toString().substr(-1) + ' p:nth-child(3)').html(num(buildings[buildingID][0]));
-    if (buildingID < 6) {
-        $('#building' + obj.id.toString().substr(-1) + ' div p:nth-child(2)').html(num(buildings[buildingID][3] * buildings[buildingID][2] * buildings[buildingID][1]) + ' gold/s');
-    } else {
-        $('#building' + obj.id.toString().substr(-1) + ' div p:nth-child(2)').html(num(Math.round(buildings[buildingID][3] * buildings[buildingID][2] * buildings[buildingID][1]) / 10) + ' Tent/s');
-    }
+    highlight(1, "upgrade");
+    setUpgradeText(0);
+    gold = prestigeGold;
+    totalGold = prestigeGold;
+    prestigePointsEarned += prestigePoints;
+    prestigePoints = 0;
+    income = 0;
+    buildings = [
+        [15, 1, 1, 0, "Tent"],
+        [60, 2, 1, 0, "Farm"],
+        [200, 3, 1, 0, "Barracks"],
+        [600, 5, 1, 0, "Church"],
+        [2000, 10, 1, 0, "Castle"],
+        [30000, 25, 1, 0, "Bank"],
+        [1000000, 1, 1, 0, "Builder"]
+    ]
+    upgrades = [
+        ["50 buildings", "Get 50 buildings total to unlock", 50, "Increase global gold/s by 20%", 1.2, 5000],
+        ["100 buildings", "Get 100 buildings total to unlock", 100, "Increase global gold/s by 20%", 1.2, 50000],
+        ["250 buildings", "Get 250 buildings total to unlock", 250, "Increase global gold/s by 20%", 1.2, 1000000],
+        ["1k buildings", "Get 1k buildings total to unlock", 1000, "Increase global gold/s by 20%", 1.2, 5000000],
+        ["10k buildings", "Get 10k buildings total to unlock", 10000, "Increase global gold/s by 20%", 1.2, 50000000],
+        ["100k buildings", "Get 100k buildings total to unlock", 100000, "Increase global gold/s by 20%", 1.2, 500000000],
+        ["1M buildings", "Get 1 Million buildings total to unlock", 1000000, "Increase global gold/s by 20%", 1.2, 5000000000],
+        ["10M buildings", "Get 10 Million buildings total to unlock", 10000000, "Increase global gold/s by 20%", 1.2, 50000000000]
+    ]
+    tents = 0;
+    lastClickedUpgrade = 1;
+    globalmult = 1 * prestigeMult;
+    achievmult = 1;
+    achievCompleted = 0;
+    totalBuildings = 0;
+    cheat = false;
+
+    $('.building').each(function(i, obj) {
+        obj.style.display = "none";
+        var buildingID = parseInt(obj.id.toString().substr(-1)) - 1;
+        $('#building' + obj.id.toString().substr(-1) + ' div p:first').html(buildings[buildingID][4] + " x" + num(buildings[buildingID][3]));
+        $('#building' + obj.id.toString().substr(-1) + ' p:nth-child(3)').html(num(buildings[buildingID][0]));
+        if (buildingID < 6) {
+            $('#building' + obj.id.toString().substr(-1) + ' div p:nth-child(2)').html(num(buildings[buildingID][3] * buildings[buildingID][2] * buildings[buildingID][1]) + ' gold/s');
+        } else {
+            $('#building' + obj.id.toString().substr(-1) + ' div p:nth-child(2)').html(num(Math.round(buildings[buildingID][3] * buildings[buildingID][2] * buildings[buildingID][1]) / 10) + ' Tent/s');
+        }
     });
-	
-$('#building1').css('display','inline-block');
+
+    $('#building1').css('display', 'inline-block');
 }
 
-function confirmHandler()
-{
-		$.confirm({
-			'title'		: 'Reset Confirmation',
-			'message'	: 'You are about to reset. <br />You will gain <b>'+ num(prestigePoints)+' RP </b> But lose everything except achievements! Continue?',
-			'buttons'	: {
-				'Yes'	: {
-					'class'	: 'blue',
-					'action': function(){
-						reset();
-					}
-				},
-				'No'	: {
-					'class'	: 'gray',
-					'action': function(){}	// Nothing to do in this case. You can as well omit the action property.
-				}
-			}
-		});
+function confirmHandler() {
+    $.confirm({
+        'title': 'Reset Confirmation',
+        'message': 'You are about to reset. <br />You will gain <b>' + num(prestigePoints) + ' RP </b> But lose everything except achievements! Continue?',
+        'buttons': {
+            'Yes': {
+                'class': 'blue',
+                'action': function() {
+                    reset();
+                }
+            },
+            'No': {
+                'class': 'gray',
+                'action': function() {} // Nothing to do in this case. You can as well omit the action property.
+            }
+        }
+    });
 }
